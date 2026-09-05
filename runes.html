@@ -111,7 +111,6 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* ===== ВВОДНЫЙ ТЕКСТ ===== */
         .runes-intro {
             text-align: center;
             padding: 30px 20px 40px;
@@ -133,22 +132,146 @@
             line-height: 1.8;
         }
 
-        /* ===== АДАПТАЦИЯ ===== */
+        /* ===== ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ ===== */
+        .main-link,
+        .runes-link,
+        .horoscope-link,
+        .divination-link,
+        .gods-link,
+        .myth-link,
+        .feedback-link,
+        .about-link {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .main-link .tooltip,
+        .runes-link .tooltip,
+        .horoscope-link .tooltip,
+        .divination-link .tooltip,
+        .gods-link .tooltip,
+        .myth-link .tooltip,
+        .feedback-link .tooltip,
+        .about-link .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 220px;
+            background: rgba(20, 20, 35, 0.95);
+            color: #d4c9b8;
+            text-align: center;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 160, 80, 0.2);
+            font-family: 'Georgia', serif;
+            font-size: 13px;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-5px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+            pointer-events: none;
+            white-space: normal;
+        }
+
+        .main-link .tooltip::after,
+        .runes-link .tooltip::after,
+        .horoscope-link .tooltip::after,
+        .divination-link .tooltip::after,
+        .gods-link .tooltip::after,
+        .myth-link .tooltip::after,
+        .feedback-link .tooltip::after,
+        .about-link .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-bottom-color: rgba(201, 160, 80, 0.2);
+        }
+
+        .main-link:hover .tooltip,
+        .runes-link:hover .tooltip,
+        .horoscope-link:hover .tooltip,
+        .divination-link:hover .tooltip,
+        .gods-link:hover .tooltip,
+        .myth-link:hover .tooltip,
+        .feedback-link:hover .tooltip,
+        .about-link:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .main-link .tooltip .highlight,
+        .runes-link .tooltip .highlight,
+        .horoscope-link .tooltip .highlight,
+        .divination-link .tooltip .highlight,
+        .gods-link .tooltip .highlight,
+        .myth-link .tooltip .highlight,
+        .feedback-link .tooltip .highlight,
+        .about-link .tooltip .highlight {
+            color: #e8c85a;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+
+        .main-link .tooltip .rune-icon,
+        .runes-link .tooltip .rune-icon,
+        .horoscope-link .tooltip .rune-icon,
+        .divination-link .tooltip .rune-icon,
+        .gods-link .tooltip .rune-icon,
+        .myth-link .tooltip .rune-icon,
+        .feedback-link .tooltip .rune-icon,
+        .about-link .tooltip .rune-icon {
+            color: #e8c85a;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
+            .gods-link .tooltip,
+            .myth-link .tooltip,
+            .feedback-link .tooltip,
+            .about-link .tooltip {
+                width: 180px;
+                font-size: 12px;
+                padding: 10px 12px;
+                top: calc(100% + 10px);
+            }
+            .main-link .tooltip .rune-icon,
+            .runes-link .tooltip .rune-icon,
+            .horoscope-link .tooltip .rune-icon,
+            .divination-link .tooltip .rune-icon,
+            .gods-link .tooltip .rune-icon,
+            .myth-link .tooltip .rune-icon,
+            .feedback-link .tooltip .rune-icon,
+            .about-link .tooltip .rune-icon {
+                font-size: 16px;
+            }
+        }
+
         @media (max-width: 768px) {
             .runes-page .att-title {
                 font-size: 22px;
                 letter-spacing: 4px;
             }
-
             .rune-grid {
                 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
                 gap: 18px;
             }
-
             .rune-card .symbol {
                 font-size: 38px;
             }
-
             .runes-intro h1 {
                 font-size: 28px;
             }
@@ -159,29 +282,23 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
-
             .rune-card {
                 padding: 16px 8px 18px;
                 min-height: 200px;
             }
-
             .rune-card .symbol {
                 font-size: 32px;
             }
-
             .rune-card .name {
                 font-size: 16px;
             }
-
             .rune-card .meaning {
                 font-size: 11px;
             }
-
             .runes-page .att-title {
                 font-size: 18px;
                 letter-spacing: 3px;
             }
-
             .runes-intro h1 {
                 font-size: 24px;
             }
@@ -199,10 +316,38 @@
                 <span>Старший Футарк · 24 руны</span>
             </div>
             <nav>
-                <a href="index.html">Главная</a>
-                <a href="runes.html">Руны</a>
-                <a href="rune-horoscope.html">Гороскоп</a>
-                <a href="rune-divination.html">Гадание</a>
+                <a href="index.html" class="main-link">
+                    Главная
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚱ</span>
+                        <span class="highlight">Вернуться на главную</span><br>
+                        Главная страница с руническим кругом
+                    </span>
+                </a>
+                <a href="runes.html" class="runes-link">
+                    Руны
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚠ</span>
+                        <span class="highlight">Все 24 руны Футарка</span><br>
+                        Значения, символы и атты
+                    </span>
+                </a>
+                <a href="rune-horoscope.html" class="horoscope-link">
+                    Гороскоп
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛃ</span>
+                        <span class="highlight">Рунический гороскоп</span><br>
+                        Предсказание по дате рождения
+                    </span>
+                </a>
+                <a href="rune-divination.html" class="divination-link">
+                    Гадание
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛉ</span>
+                        <span class="highlight">Онлайн-гадание на рунах</span><br>
+                        Брось руны и узнай судьбу
+                    </span>
+                </a>
                 <a href="gods.html" class="gods-link">
                     Боги
                     <span class="tooltip">
@@ -219,7 +364,14 @@
                         Девять миров, руны и боги
                     </span>
                 </a>
-                <a href="feedback.html">Обратная связь</a>
+                <a href="feedback.html" class="feedback-link">
+                    Обратная связь
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚨ</span>
+                        <span class="highlight">Написать создателю</span><br>
+                        Вопросы, идеи и поддержка
+                    </span>
+                </a>
                 <a href="about.html" class="about-link">
                     О сайте
                     <span class="tooltip">
@@ -243,56 +395,44 @@
                 </p>
             </div>
 
-            <!-- ============================================================ -->
-        <!-- ===== ПЕРВЫЙ АТТ — РУНЫ ФРЕЙРА ===== -->
-        <!-- ============================================================ -->
+            <h2 class="att-title" id="runes">Первый атт <span>Руны Фрейра и Фрейи · Боги плодородия</span></h2>
 
-        <h2 class="att-title" id="runes">Первый атт <span>Руны Фрейра и Фрейи · Боги плодородия</span></h2>
+            <div class="rune-grid">
+                <a href="rune-fechu.html"><div class="rune-card"><span class="symbol">ᚠ</span><div class="name">Феху</div><div class="meaning">Богатство · Скот · Изобилие<span>Созидание и материальная энергия</span></div></div></a>
+                <a href="rune-uruz.html"><div class="rune-card"><span class="symbol">ᚢ</span><div class="name">Уруз</div><div class="meaning">Сила · Мощь · Стойкость<span>Первобытная энергия и выносливость</span></div></div></a>
+                <a href="rune-thurisaz.html"><div class="rune-card"><span class="symbol">ᚦ</span><div class="name">Турисаз</div><div class="meaning">Защита · Препятствие · Молот Тора<span>Руна-щит и преодоление</span></div></div></a>
+                <a href="rune-ansuz.html"><div class="rune-card"><span class="symbol">ᚨ</span><div class="name">Ансуз</div><div class="meaning">Знание · Речь · Мудрость<span>Связана с Одином, ясность ума</span></div></div></a>
+                <a href="rune-raido.html"><div class="rune-card"><span class="symbol">ᚱ</span><div class="name">Райдо</div><div class="meaning">Путь · Путешествие · Перемены<span>Направление и движение</span></div></div></a>
+                <a href="rune-kenaz.html"><div class="rune-card"><span class="symbol">ᚲ</span><div class="name">Кеназ</div><div class="meaning">Факел · Творчество · Огонь<span>Вдохновение и внутренний свет</span></div></div></a>
+                <a href="rune-gebo.html"><div class="rune-card"><span class="symbol">ᚷ</span><div class="name">Гебо</div><div class="meaning">Дар · Партнёрство · Равновесие<span>Гармоничный обмен и союзы</span></div></div></a>
+                <a href="rune-wunjo.html"><div class="rune-card"><span class="symbol">ᚹ</span><div class="name">Вуньо</div><div class="meaning">Радость · Успех · Свет<span>Душевный подъём и исполнение</span></div></div></a>
+            </div>
 
-        <div class="rune-grid">
-            <a href="rune-fechu.html"><div class="rune-card"><span class="symbol">ᚠ</span><div class="name">Феху</div><div class="meaning">Богатство · Скот · Изобилие<span>Созидание и материальная энергия</span></div></div></a>
-            <a href="rune-uruz.html"><div class="rune-card"><span class="symbol">ᚢ</span><div class="name">Уруз</div><div class="meaning">Сила · Мощь · Стойкость<span>Первобытная энергия и выносливость</span></div></div></a>
-            <a href="rune-thurisaz.html"><div class="rune-card"><span class="symbol">ᚦ</span><div class="name">Турисаз</div><div class="meaning">Защита · Препятствие · Молот Тора<span>Руна-щит и преодоление</span></div></div></a>
-            <a href="rune-ansuz.html"><div class="rune-card"><span class="symbol">ᚨ</span><div class="name">Ансуз</div><div class="meaning">Знание · Речь · Мудрость<span>Связана с Одином, ясность ума</span></div></div></a>
-            <a href="rune-raido.html"><div class="rune-card"><span class="symbol">ᚱ</span><div class="name">Райдо</div><div class="meaning">Путь · Путешествие · Перемены<span>Направление и движение</span></div></div></a>
-            <a href="rune-kenaz.html"><div class="rune-card"><span class="symbol">ᚲ</span><div class="name">Кеназ</div><div class="meaning">Факел · Творчество · Огонь<span>Вдохновение и внутренний свет</span></div></div></a>
-            <a href="rune-gebo.html"><div class="rune-card"><span class="symbol">ᚷ</span><div class="name">Гебо</div><div class="meaning">Дар · Партнёрство · Равновесие<span>Гармоничный обмен и союзы</span></div></div></a>
-            <a href="rune-wunjo.html"><div class="rune-card"><span class="symbol">ᚹ</span><div class="name">Вуньо</div><div class="meaning">Радость · Успех · Свет<span>Душевный подъём и исполнение</span></div></div></a>
-        </div>
+            <h2 class="att-title">Второй атт <span>Руны Хеймдалля · Боги-защитники</span></h2>
 
-        <!-- ============================================================ -->
-        <!-- ===== ВТОРОЙ АТТ — РУНЫ ХЕЙМДАЛЛЯ ===== -->
-        <!-- ============================================================ -->
+            <div class="rune-grid">
+                <a href="rune-hagalaz.html"><div class="rune-card"><span class="symbol">ᚺ</span><div class="name">Хагалаз</div><div class="meaning">Град · Разрушение · Очищение<span>Перемены через кризис</span></div></div></a>
+                <a href="rune-nauthiz.html"><div class="rune-card"><span class="symbol">ᚾ</span><div class="name">Наутиз</div><div class="meaning">Нужда · Препятствие · Терпение<span>Испытания, нужда и</span></div></div></a>
+                <a href="rune-isa.html"><div class="rune-card"><span class="symbol">ᛁ</span><div class="name">Иса</div><div class="meaning">Лёд · Заморозка · Остановка<span>Время тишины и сохранения</span></div></div></a>
+                <a href="rune-jera.html"><div class="rune-card"><span class="symbol">ᛃ</span><div class="name">Йера</div><div class="meaning">Урожай · Год · Цикл<span>Завершение дел и справедливость</span></div></div></a>
+                <a href="rune-eihwaz.html"><div class="rune-card"><span class="symbol">ᛇ</span><div class="name">Эйваз</div><div class="meaning">Метафорическая смерть<span>Связь между мирами, стержень</span></div></div></a>
+                <a href="rune-perthro.html"><div class="rune-card"><span class="symbol">ᛈ</span><div class="name">Перто</div><div class="meaning">Тайна · Жребий · Судьба<span>Воля судьбы, неизведанное и женская сила</span></div></div></a>
+                <a href="rune-algiz.html"><div class="rune-card"><span class="symbol">ᛉ</span><div class="name">Альгиз</div><div class="meaning">Лось · Защита · Интуиция<span>Высшая защита и связь с высшим «Я»</span></div></div></a>
+                <a href="rune-sowilo.html"><div class="rune-card"><span class="symbol">ᛋ</span><div class="name">Соулу</div><div class="meaning">Солнце · Победа · Целостность<span>Энергия триумфа</span></div></div></a>
+            </div>
 
-        <h2 class="att-title">Второй атт <span>Руны Хеймдалля · Боги-защитники</span></h2>
+            <h2 class="att-title">Третий атт <span>Руны Тюра · Боги воинов и судьбы</span></h2>
 
-        <div class="rune-grid">
-            <a href="rune-hagalaz.html"><div class="rune-card"><span class="symbol">ᚺ</span><div class="name">Хагалаз</div><div class="meaning">Град · Разрушение · Очищение<span>Перемены через кризис</span></div></div></a>
-            <a href="rune-nauthiz.html"><div class="rune-card"><span class="symbol">ᚾ</span><div class="name">Наутиз</div><div class="meaning">Нужда · Препятствие · Терпение<span>Испытания, нужда и</span></div></div></a>
-            <a href="rune-isa.html"><div class="rune-card"><span class="symbol">ᛁ</span><div class="name">Иса</div><div class="meaning">Лёд · Заморозка · Остановка<span>Время тишины и сохранения</span></div></div></a>
-            <a href="rune-jera.html"><div class="rune-card"><span class="symbol">ᛃ</span><div class="name">Йера</div><div class="meaning">Урожай · Год · Цикл<span>Завершение дел и справедливость</span></div></div></a>
-            <a href="rune-eihwaz.html"><div class="rune-card"><span class="symbol">ᛇ</span><div class="name">Эйваз</div><div class="meaning">Метафорическая смерть<span>Связь между мирами, стержень</span></div></div></a>
-            <a href="rune-perthro.html"><div class="rune-card"><span class="symbol">ᛈ</span><div class="name">Перто</div><div class="meaning">Тайна · Жребий · Судьба<span>Воля судьбы, неизведанное и женская сила</span></div></div></a>
-            <a href="rune-algiz.html"><div class="rune-card"><span class="symbol">ᛉ</span><div class="name">Альгиз</div><div class="meaning">Лось · Защита · Интуиция<span>Высшая защита и связь с высшим «Я»</span></div></div></a>
-            <a href="rune-sowilo.html"><div class="rune-card"><span class="symbol">ᛋ</span><div class="name">Соулу</div><div class="meaning">Солнце · Победа · Целостность<span>Энергия триумфа</span></div></div></a>
-        </div>
-
-        <!-- ============================================================ -->
-        <!-- ===== ТРЕТИЙ АТТ — РУНЫ ТЮРА ===== -->
-        <!-- ============================================================ -->
-
-        <h2 class="att-title">Третий атт <span>Руны Тюра · Боги воинов и судьбы</span></h2>
-
-        <div class="rune-grid">
-            <a href="rune-tiwaz.html"><div class="rune-card"><span class="symbol">ᛏ</span><div class="name">Тейваз</div><div class="meaning">Тюр · Честь · Победа<span>Самопожертвование и справедливость</span></div></div></a>
-            <a href="rune-berkana.html"><div class="rune-card"><span class="symbol">ᛒ</span><div class="name">Беркана</div><div class="meaning">Берёза · Рост · Забота<span>Материнство, обновление и семья</span></div></div></a>
-            <a href="rune-ehwaz.html"><div class="rune-card"><span class="symbol">ᛖ</span><div class="name">Эхваз</div><div class="meaning">Символ коня · Движение · Доверие<span>Гармония и путь к изменениям</span></div></div></a>
-            <a href="rune-mannaz.html"><div class="rune-card"><span class="symbol">ᛗ</span><div class="name">Манназ</div><div class="meaning">Человек · Общество · Разум<span>Взаимодействие и помощь предков</span></div></div></a>
-            <a href="rune-laguz.html"><div class="rune-card"><span class="symbol">ᛚ</span><div class="name">Лагуз</div><div class="meaning">Вода · Интуиция · Поток<span>Эмоции, подсознание и течение жизни</span></div></div></a>
-            <a href="rune-inguz.html"><div class="rune-card"><span class="symbol">ᛝ</span><div class="name">Ингуз</div><div class="meaning">Накопление · Начало · Потенциал<span>Новые проекты и плодородие</span></div></div></a>
-            <a href="rune-othala.html"><div class="rune-card"><span class="symbol">ᛟ</span><div class="name">Отал</div><div class="meaning">Родина · Наследие · Дом<span>Корни, семья и материальное наследие</span></div></div></a>
-            <a href="rune-dagaz.html"><div class="rune-card"><span class="symbol">ᛞ</span><div class="name">Дагаз</div><div class="meaning">Рассвет · Прорыв · Трансформация<span>Свет после тьмы, новое начало</span></div></div></a>
-        </div>
+            <div class="rune-grid">
+                <a href="rune-tiwaz.html"><div class="rune-card"><span class="symbol">ᛏ</span><div class="name">Тейваз</div><div class="meaning">Тюр · Честь · Победа<span>Самопожертвование и справедливость</span></div></div></a>
+                <a href="rune-berkana.html"><div class="rune-card"><span class="symbol">ᛒ</span><div class="name">Беркана</div><div class="meaning">Берёза · Рост · Забота<span>Материнство, обновление и семья</span></div></div></a>
+                <a href="rune-ehwaz.html"><div class="rune-card"><span class="symbol">ᛖ</span><div class="name">Эхваз</div><div class="meaning">Символ коня · Движение · Доверие<span>Гармония и путь к изменениям</span></div></div></a>
+                <a href="rune-mannaz.html"><div class="rune-card"><span class="symbol">ᛗ</span><div class="name">Манназ</div><div class="meaning">Человек · Общество · Разум<span>Взаимодействие и помощь предков</span></div></div></a>
+                <a href="rune-laguz.html"><div class="rune-card"><span class="symbol">ᛚ</span><div class="name">Лагуз</div><div class="meaning">Вода · Интуиция · Поток<span>Эмоции, подсознание и течение жизни</span></div></div></a>
+                <a href="rune-inguz.html"><div class="rune-card"><span class="symbol">ᛝ</span><div class="name">Ингуз</div><div class="meaning">Накопление · Начало · Потенциал<span>Новые проекты и плодородие</span></div></div></a>
+                <a href="rune-othala.html"><div class="rune-card"><span class="symbol">ᛟ</span><div class="name">Отал</div><div class="meaning">Родина · Наследие · Дом<span>Корни, семья и материальное наследие</span></div></div></a>
+                <a href="rune-dagaz.html"><div class="rune-card"><span class="symbol">ᛞ</span><div class="name">Дагаз</div><div class="meaning">Рассвет · Прорыв · Трансформация<span>Свет после тьмы, новое начало</span></div></div></a>
+            </div>
 
         </section>
 

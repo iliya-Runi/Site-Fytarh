@@ -7,9 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ БОГОВ ===== */
-
-        /* ===== ГЕРОЙ ===== */
         .hero-gods {
             text-align: center;
             padding: 60px 20px 70px;
@@ -36,7 +33,6 @@
             line-height: 1.8;
         }
 
-        /* ===== КАРТОЧКИ БОГОВ ===== */
         .gods-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -110,7 +106,6 @@
             text-transform: uppercase;
         }
 
-        /* ===== ЦИТАТА ===== */
         .quote-block {
             text-align: center;
             padding: 40px;
@@ -137,29 +132,151 @@
             margin-top: 15px;
         }
 
-        /* ===== АДАПТАЦИЯ ===== */
+        /* ===== ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ ===== */
+        .main-link,
+        .runes-link,
+        .horoscope-link,
+        .divination-link,
+        .gods-link,
+        .myth-link,
+        .feedback-link,
+        .about-link {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .main-link .tooltip,
+        .runes-link .tooltip,
+        .horoscope-link .tooltip,
+        .divination-link .tooltip,
+        .gods-link .tooltip,
+        .myth-link .tooltip,
+        .feedback-link .tooltip,
+        .about-link .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 220px;
+            background: rgba(20, 20, 35, 0.95);
+            color: #d4c9b8;
+            text-align: center;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 160, 80, 0.2);
+            font-family: 'Georgia', serif;
+            font-size: 13px;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-5px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+            pointer-events: none;
+            white-space: normal;
+        }
+
+        .main-link .tooltip::after,
+        .runes-link .tooltip::after,
+        .horoscope-link .tooltip::after,
+        .divination-link .tooltip::after,
+        .gods-link .tooltip::after,
+        .myth-link .tooltip::after,
+        .feedback-link .tooltip::after,
+        .about-link .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-bottom-color: rgba(201, 160, 80, 0.2);
+        }
+
+        .main-link:hover .tooltip,
+        .runes-link:hover .tooltip,
+        .horoscope-link:hover .tooltip,
+        .divination-link:hover .tooltip,
+        .gods-link:hover .tooltip,
+        .myth-link:hover .tooltip,
+        .feedback-link:hover .tooltip,
+        .about-link:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .main-link .tooltip .highlight,
+        .runes-link .tooltip .highlight,
+        .horoscope-link .tooltip .highlight,
+        .divination-link .tooltip .highlight,
+        .gods-link .tooltip .highlight,
+        .myth-link .tooltip .highlight,
+        .feedback-link .tooltip .highlight,
+        .about-link .tooltip .highlight {
+            color: #e8c85a;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+
+        .main-link .tooltip .rune-icon,
+        .runes-link .tooltip .rune-icon,
+        .horoscope-link .tooltip .rune-icon,
+        .divination-link .tooltip .rune-icon,
+        .gods-link .tooltip .rune-icon,
+        .myth-link .tooltip .rune-icon,
+        .feedback-link .tooltip .rune-icon,
+        .about-link .tooltip .rune-icon {
+            color: #e8c85a;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
+            .gods-link .tooltip,
+            .myth-link .tooltip,
+            .feedback-link .tooltip,
+            .about-link .tooltip {
+                width: 180px;
+                font-size: 12px;
+                padding: 10px 12px;
+                top: calc(100% + 10px);
+            }
+            .main-link .tooltip .rune-icon,
+            .runes-link .tooltip .rune-icon,
+            .horoscope-link .tooltip .rune-icon,
+            .divination-link .tooltip .rune-icon,
+            .gods-link .tooltip .rune-icon,
+            .myth-link .tooltip .rune-icon,
+            .feedback-link .tooltip .rune-icon,
+            .about-link .tooltip .rune-icon {
+                font-size: 16px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-gods h1 {
                 font-size: 32px;
             }
-
             .gods-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 20px;
             }
-
             .god-card {
                 padding: 20px 15px;
             }
-
             .god-card .symbol {
                 font-size: 36px;
             }
-
             .god-card .name {
                 font-size: 20px;
             }
-
             .quote-block .quote {
                 font-size: 18px;
             }
@@ -170,23 +287,18 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-
             .hero-gods h1 {
                 font-size: 26px;
             }
-
             .god-card .symbol {
                 font-size: 32px;
             }
-
             .god-card .name {
                 font-size: 18px;
             }
-
             .god-card .description {
                 font-size: 13px;
             }
-
             .quote-block .quote {
                 font-size: 16px;
             }
@@ -204,10 +316,38 @@
                 <span>Старший Футарк · 24 руны</span>
             </div>
             <nav>
-                <a href="index.html">Главная</a>
-                <a href="runes.html">Руны</a>
-                <a href="rune-horoscope.html">Гороскоп</a>
-                <a href="rune-divination.html">Гадание</a>
+                <a href="index.html" class="main-link">
+                    Главная
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚱ</span>
+                        <span class="highlight">Вернуться на главную</span><br>
+                        Главная страница с руническим кругом
+                    </span>
+                </a>
+                <a href="runes.html" class="runes-link">
+                    Руны
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚠ</span>
+                        <span class="highlight">Все 24 руны Футарка</span><br>
+                        Значения, символы и атты
+                    </span>
+                </a>
+                <a href="rune-horoscope.html" class="horoscope-link">
+                    Гороскоп
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛃ</span>
+                        <span class="highlight">Рунический гороскоп</span><br>
+                        Предсказание по дате рождения
+                    </span>
+                </a>
+                <a href="rune-divination.html" class="divination-link">
+                    Гадание
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛉ</span>
+                        <span class="highlight">Онлайн-гадание на рунах</span><br>
+                        Брось руны и узнай судьбу
+                    </span>
+                </a>
                 <a href="gods.html" class="gods-link">
                     Боги
                     <span class="tooltip">
@@ -224,7 +364,14 @@
                         Девять миров, руны и боги
                     </span>
                 </a>
-                <a href="feedback.html">Обратная связь</a>
+                <a href="feedback.html" class="feedback-link">
+                    Обратная связь
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚨ</span>
+                        <span class="highlight">Написать создателю</span><br>
+                        Вопросы, идеи и поддержка
+                    </span>
+                </a>
                 <a href="about.html" class="about-link">
                     О сайте
                     <span class="tooltip">
@@ -248,7 +395,6 @@
         <!-- ===== КАРТОЧКИ БОГОВ ===== -->
         <div class="gods-grid">
 
-            <!-- 1. Один -->
             <div class="god-card">
                 <div class="symbol">ᚨ</div>
                 <div class="name">Один</div>
@@ -260,7 +406,6 @@
                 <div class="tag">✦ Верховный бог</div>
             </div>
 
-            <!-- 2. Тор -->
             <div class="god-card">
                 <div class="symbol">ᚦ</div>
                 <div class="name">Тор</div>
@@ -272,7 +417,6 @@
                 <div class="tag">✦ Защитник</div>
             </div>
 
-            <!-- 3. Локи -->
             <div class="god-card">
                 <div class="symbol">ᚲ</div>
                 <div class="name">Локи</div>
@@ -284,7 +428,6 @@
                 <div class="tag">✦ Хаос · Иллюзия</div>
             </div>
 
-            <!-- 4. Фрейя -->
             <div class="god-card">
                 <div class="symbol">ᚠ</div>
                 <div class="name">Фрейя</div>
@@ -296,7 +439,6 @@
                 <div class="tag">✦ Любовь · Магия</div>
             </div>
 
-            <!-- 5. Тюр -->
             <div class="god-card">
                 <div class="symbol">ᛏ</div>
                 <div class="name">Тюр</div>
@@ -308,7 +450,6 @@
                 <div class="tag">✦ Честь · Справедливость</div>
             </div>
 
-            <!-- 6. Хеймдалль -->
             <div class="god-card">
                 <div class="symbol">ᛉ</div>
                 <div class="name">Хеймдалль</div>

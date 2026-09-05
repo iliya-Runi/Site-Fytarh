@@ -92,23 +92,179 @@
             opacity: 0.4;
             margin-top: 40px;
         }
+
+        /* ===== ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ ДЛЯ ВСЕХ КНОПОК ===== */
+        .main-link,
+        .runes-link,
+        .horoscope-link,
+        .divination-link,
+        .gods-link,
+        .myth-link,
+        .feedback-link,
+        .about-link {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .main-link .tooltip,
+        .runes-link .tooltip,
+        .horoscope-link .tooltip,
+        .divination-link .tooltip,
+        .gods-link .tooltip,
+        .myth-link .tooltip,
+        .feedback-link .tooltip,
+        .about-link .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 220px;
+            background: rgba(20, 20, 35, 0.95);
+            color: #d4c9b8;
+            text-align: center;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 160, 80, 0.2);
+            font-family: 'Georgia', serif;
+            font-size: 13px;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-5px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            z-index: 100;
+            pointer-events: none;
+            white-space: normal;
+        }
+
+        .main-link .tooltip::after,
+        .runes-link .tooltip::after,
+        .horoscope-link .tooltip::after,
+        .divination-link .tooltip::after,
+        .gods-link .tooltip::after,
+        .myth-link .tooltip::after,
+        .feedback-link .tooltip::after,
+        .about-link .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-bottom-color: rgba(201, 160, 80, 0.2);
+        }
+
+        .main-link:hover .tooltip,
+        .runes-link:hover .tooltip,
+        .horoscope-link:hover .tooltip,
+        .divination-link:hover .tooltip,
+        .gods-link:hover .tooltip,
+        .myth-link:hover .tooltip,
+        .feedback-link:hover .tooltip,
+        .about-link:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .main-link .tooltip .highlight,
+        .runes-link .tooltip .highlight,
+        .horoscope-link .tooltip .highlight,
+        .divination-link .tooltip .highlight,
+        .gods-link .tooltip .highlight,
+        .myth-link .tooltip .highlight,
+        .feedback-link .tooltip .highlight,
+        .about-link .tooltip .highlight {
+            color: #e8c85a;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+        }
+
+        .main-link .tooltip .rune-icon,
+        .runes-link .tooltip .rune-icon,
+        .horoscope-link .tooltip .rune-icon,
+        .divination-link .tooltip .rune-icon,
+        .gods-link .tooltip .rune-icon,
+        .myth-link .tooltip .rune-icon,
+        .feedback-link .tooltip .rune-icon,
+        .about-link .tooltip .rune-icon {
+            color: #e8c85a;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
+            .gods-link .tooltip,
+            .myth-link .tooltip,
+            .feedback-link .tooltip,
+            .about-link .tooltip {
+                width: 180px;
+                font-size: 12px;
+                padding: 10px 12px;
+                top: calc(100% + 10px);
+            }
+            .main-link .tooltip .rune-icon,
+            .runes-link .tooltip .rune-icon,
+            .horoscope-link .tooltip .rune-icon,
+            .divination-link .tooltip .rune-icon,
+            .gods-link .tooltip .rune-icon,
+            .myth-link .tooltip .rune-icon,
+            .feedback-link .tooltip .rune-icon,
+            .about-link .tooltip .rune-icon {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
 
-         <!-- ===== ШАПКА С МЕНЮ ===== -->
+        <!-- ===== ШАПКА С МЕНЮ (все кнопки с всплывающими подсказками) ===== -->
         <header>
             <div class="logo">
                 ᛝᚲᚷᛉᚠᚨᚱ
                 <span>Старший Футарк · 24 руны</span>
             </div>
             <nav>
-                <a href="index.html">Главная</a>
-                <a href="runes.html">Руны</a>
-                <a href="rune-horoscope.html">Гороскоп</a>
-                <a href="rune-divination.html">Гадание</a>
+                <a href="index.html" class="main-link">
+                    Главная
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚱ</span>
+                        <span class="highlight">Вернуться на главную</span><br>
+                        Главная страница с руническим кругом
+                    </span>
+                </a>
+                <a href="runes.html" class="runes-link">
+                    Руны
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚠ</span>
+                        <span class="highlight">Все 24 руны Футарка</span><br>
+                        Значения, символы и атты
+                    </span>
+                </a>
+                <a href="rune-horoscope.html" class="horoscope-link">
+                    Гороскоп
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛃ</span>
+                        <span class="highlight">Рунический гороскоп</span><br>
+                        Предсказание по дате рождения
+                    </span>
+                </a>
+                <a href="rune-divination.html" class="divination-link">
+                    Гадание
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛉ</span>
+                        <span class="highlight">Онлайн-гадание на рунах</span><br>
+                        Брось руны и узнай судьбу
+                    </span>
+                </a>
                 <a href="gods.html" class="gods-link">
                     Боги
                     <span class="tooltip">
@@ -125,7 +281,14 @@
                         Девять миров, руны и боги
                     </span>
                 </a>
-                <a href="feedback.html">Обратная связь</a>
+                <a href="feedback.html" class="feedback-link">
+                    Обратная связь
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚨ</span>
+                        <span class="highlight">Написать создателю</span><br>
+                        Вопросы, идеи и поддержка
+                    </span>
+                </a>
                 <a href="about.html" class="about-link">
                     О сайте
                     <span class="tooltip">
@@ -172,72 +335,70 @@
             </ul>
 
             <!-- ============================================================ -->
-<!-- ===== О СОЗДАТЕЛЕ И ПОДДЕРЖКЕ ===== -->
-<!-- ============================================================ -->
+            <!-- ===== О СОЗДАТЕЛЕ И ПОДДЕРЖКЕ ===== -->
+            <!-- ============================================================ -->
 
-<section class="myth-section" style="margin-top: 40px; background: rgba(20, 20, 35, 0.4); border: 1px solid rgba(201, 160, 80, 0.08);">
-    <h2 style="font-size: 28px; color: #c9a050; letter-spacing: 3px; margin-bottom: 15px; grid-column: 1 / -1; text-align: center;">
-        ✦ О создателе ✦
-    </h2>
+            <section style="margin-top: 40px; background: rgba(20, 20, 35, 0.4); border: 1px solid rgba(201, 160, 80, 0.08); padding: 30px; border-radius: 20px;">
+                <h2 style="font-size: 28px; color: #c9a050; letter-spacing: 3px; margin-bottom: 15px; text-align: center;">
+                    ✦ О создателе ✦
+                </h2>
 
-    <div class="myth-text" style="grid-column: 1 / -1; color: #b8ab9a; line-height: 2; font-size: 16px; font-family: 'Georgia', serif; text-align: left; max-width: 900px; margin: 0 auto;">
+                <div style="color: #b8ab9a; line-height: 2; font-size: 16px; font-family: 'Georgia', serif; max-width: 900px; margin: 0 auto;">
 
-        <p style="margin-bottom: 18px;">
-            Этот сайт был создан <strong style="color: #c9a050;">одним человеком</strong> — вдохновением, 
-            чашкой кофе и несколькими бессонными ночами. 
-            В процессе работы я использовал <strong style="color: #c9a050;">искусственный интеллект</strong> 
-            как помощника: для генерации идей, структурирования информации и написания кода. 
-            ИИ помог собрать воедино знания о рунах, мифологии и дизайне, но 
-            <strong style="color: #c9a050;">душа и смысл</strong> — это ручная работа.
-        </p>
+                    <p style="margin-bottom: 18px;">
+                        Этот сайт был создан <strong style="color: #c9a050;">одним человеком</strong> — вдохновением, 
+                        чашкой кофе и несколькими бессонными ночами. 
+                        В процессе работы я использовал <strong style="color: #c9a050;">искусственный интеллект</strong> 
+                        как помощника: для генерации идей, структурирования информации и написания кода. 
+                        ИИ помог собрать воедино знания о рунах, мифологии и дизайне, но 
+                        <strong style="color: #c9a050;">душа и смысл</strong> — это ручная работа.
+                    </p>
 
-        <p style="margin-bottom: 18px;">
-            <span style="color: #c9a050;">✦</span> Если вам понравился контент, способ подачи или атмосфера сайта — 
-            я буду <strong style="color: #c9a050;">очень благодарен</strong> за вашу поддержку.
-            <span style="color: #c9a050;">✦</span> Даже небольшой донат — это знак того, что я двигаюсь в правильном направлении 
-            и что моя работа кому-то откликается.
-            <span style="color: #c9a050;">✦</span> Все средства пойдут на развитие проекта, новые материалы и 
-            улучшение сайта также для обратной связи был создан ТГ канал где вы можете написать свое мнение и предложить новые идеи для сайта внизу страницы в строке контакты.
-        </p>
+                    <p style="margin-bottom: 18px;">
+                        <span style="color: #c9a050;">✦</span> Если вам понравился контент, способ подачи или атмосфера сайта — 
+                        я буду <strong style="color: #c9a050;">очень благодарен</strong> за вашу поддержку.
+                        <span style="color: #c9a050;">✦</span> Даже небольшой донат — это знак того, что я двигаюсь в правильном направлении 
+                        и что моя работа кому-то откликается.
+                        <span style="color: #c9a050;">✦</span> Все средства пойдут на развитие проекта, новые материалы и 
+                        улучшение сайта также для обратной связи был создан ТГ канал где вы можете написать свое мнение и предложить новые идеи для сайта внизу страницы в строке контакты.
+                    </p>
 
-        <!-- Блок с кнопкой доната -->
-        <div style="text-align: center; margin: 30px 0 10px; padding: 25px; background: rgba(201, 160, 80, 0.05); border-radius: 16px; border: 1px solid rgba(201, 160, 80, 0.1);">
-            <p style="color: #d4c9b8; font-size: 18px; margin-bottom: 15px;">
-                ☕ Поддержать создателя
-            </p>
-            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                <!-- Кнопка для доната (замените ссылку на свою) -->
-                <a href="https://www.donationalerts.com/r/ElderFuthark" target="_blank" 
-                   style="display: inline-block; padding: 12px 35px; background: rgba(201, 160, 80, 0.15); 
-                          color: #c9a050; border: 1px solid rgba(201, 160, 80, 0.3); border-radius: 30px; 
-                          text-decoration: none; font-weight: 700; letter-spacing: 2px; transition: 0.3s; font-size: 14px;">
-                    ✦ Донат
-                </a>
-                <!-- Альтернативный вариант (например, Boosty) -->
-                <a href="https://boosty.to/ElderFuthark" target="_blank" 
-                   style="display: inline-block; padding: 12px 35px; background: rgba(201, 160, 80, 0.15); 
-                          color: #c9a050; border: 1px solid rgba(201, 160, 80, 0.3); border-radius: 30px; 
-                          text-decoration: none; font-weight: 700; letter-spacing: 2px; transition: 0.3s; font-size: 14px;">
-                    ✦ Boosty
-                </a>
-                <!-- Альтернативный вариант (например, Boosty) -->
-                <a href="https://www.tbank.ru/rm/r_UTQlDYdoht.DjsPiABpsp/Ip9Qr54681" target="_blank" 
-                   style="display: inline-block; padding: 12px 35px; background: rgba(201, 160, 80, 0.15); 
-                          color: #c9a050; border: 1px solid rgba(201, 160, 80, 0.3); border-radius: 30px; 
-                          text-decoration: none; font-weight: 700; letter-spacing: 2px; transition: 0.3s; font-size: 14px;">
-                    ✦ Счет СПБ
-                </a>
-            </div>
-            <p style="color: #aa977b; font-size: 13px; margin-top: 15px; font-style: italic;">
-                Спасибо, что заглянули. Пусть руны ведут вас правильным путём. ᛉ
-            </p>
-        </div>
+                    <!-- Блок с кнопкой доната -->
+                    <div style="text-align: center; margin: 30px 0 10px; padding: 25px; background: rgba(201, 160, 80, 0.05); border-radius: 16px; border: 1px solid rgba(201, 160, 80, 0.1);">
+                        <p style="color: #d4c9b8; font-size: 18px; margin-bottom: 15px;">
+                            ☕ Поддержать создателя
+                        </p>
+                        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                            <a href="https://www.donationalerts.com/r/ElderFuthark" target="_blank" 
+                               style="display: inline-block; padding: 12px 35px; background: rgba(201, 160, 80, 0.15); 
+                                      color: #c9a050; border: 1px solid rgba(201, 160, 80, 0.3); border-radius: 30px; 
+                                      text-decoration: none; font-weight: 700; letter-spacing: 2px; transition: 0.3s; font-size: 14px;">
+                                ✦ Донат
+                            </a>
+                            <a href="https://boosty.to/ElderFuthark" target="_blank" 
+                               style="display: inline-block; padding: 12px 35px; background: rgba(201, 160, 80, 0.15); 
+                                      color: #c9a050; border: 1px solid rgba(201, 160, 80, 0.3); border-radius: 30px; 
+                                      text-decoration: none; font-weight: 700; letter-spacing: 2px; transition: 0.3s; font-size: 14px;">
+                                ✦ Boosty
+                            </a>
+                            <a href="https://www.tbank.ru/rm/r_UTQlDYdoht.DjsPiABpsp/Ip9Qr54681" target="_blank" 
+                               style="display: inline-block; padding: 12px 35px; background: rgba(201, 160, 80, 0.15); 
+                                      color: #c9a050; border: 1px solid rgba(201, 160, 80, 0.3); border-radius: 30px; 
+                                      text-decoration: none; font-weight: 700; letter-spacing: 2px; transition: 0.3s; font-size: 14px;">
+                                ✦ Счет СПБ
+                            </a>
+                        </div>
+                        <p style="color: #aa977b; font-size: 13px; margin-top: 15px; font-style: italic;">
+                            Спасибо, что заглянули. Пусть руны ведут вас правильным путём. ᛉ
+                        </p>
+                    </div>
 
-        <div style="border-top: 1px solid rgba(201, 160, 80, 0.1); padding-top: 20px; margin-top: 10px; text-align: center; font-style: italic; color: #6a5f50;">
-            «Сделано с душой, чашкой чая  и маленькой помощью искусственного интеллекта.»
-        </div>
-    </div>
-</section>
+                    <div style="border-top: 1px solid rgba(201, 160, 80, 0.1); padding-top: 20px; margin-top: 10px; text-align: center; font-style: italic; color: #6a5f50;">
+                        «Сделано с душой, чашкой чая и маленькой помощью искусственного интеллекта.»
+                    </div>
+                </div>
+            </section>
+
             <div class="rune-signature">
                 ᚲᛃᚨᛉᚷᚠᚱ
             </div>
@@ -253,7 +414,7 @@
             <p>ᛝᚲᚷᛉᚠᚨᚱ · 24 руны Старшего Футарка</p>
             <p style="margin-top: 8px;">
                 <a href="about.html">О сайте</a> ·
-                <a href="https://t.me/FutharkRunes" target="_blank" >Контакты</a>
+                <a href="https://t.me/FutharkRunes" target="_blank">Контакты</a>
             </p>
             <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">
                 © 2026 ᚲᛃᚨᛉᚷᚠᚱ Сделано с душой и (мудростью)
