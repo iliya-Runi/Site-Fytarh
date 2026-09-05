@@ -92,20 +92,30 @@
         }
 
         /* ============================================================
-           ===== СНОСКИ ДЛЯ КНОПОК "БОГИ", "МИФОЛОГИЯ", "О САЙТЕ" =====
+           ===== ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ ДЛЯ ВСЕХ КНОПОК =====
            ============================================================ */
 
-        /* Общие стили для всех ссылок с сносками */
+        /* Общие стили для всех ссылок с подсказками */
+        .main-link,
+        .runes-link,
+        .horoscope-link,
+        .divination-link,
         .gods-link,
         .myth-link,
+        .feedback-link,
         .about-link {
             position: relative;
             cursor: pointer;
         }
 
         /* Общие стили для всех подсказок */
+        .main-link .tooltip,
+        .runes-link .tooltip,
+        .horoscope-link .tooltip,
+        .divination-link .tooltip,
         .gods-link .tooltip,
         .myth-link .tooltip,
+        .feedback-link .tooltip,
         .about-link .tooltip {
             visibility: hidden;
             opacity: 0;
@@ -132,8 +142,13 @@
         }
 
         /* Стрелка подсказки (сверху) */
+        .main-link .tooltip::after,
+        .runes-link .tooltip::after,
+        .horoscope-link .tooltip::after,
+        .divination-link .tooltip::after,
         .gods-link .tooltip::after,
         .myth-link .tooltip::after,
+        .feedback-link .tooltip::after,
         .about-link .tooltip::after {
             content: '';
             position: absolute;
@@ -145,8 +160,13 @@
         }
 
         /* Показываем при наведении */
+        .main-link:hover .tooltip,
+        .runes-link:hover .tooltip,
+        .horoscope-link:hover .tooltip,
+        .divination-link:hover .tooltip,
         .gods-link:hover .tooltip,
         .myth-link:hover .tooltip,
+        .feedback-link:hover .tooltip,
         .about-link:hover .tooltip {
             visibility: visible;
             opacity: 1;
@@ -154,16 +174,26 @@
         }
 
         /* Общие стили для элементов внутри подсказок */
+        .main-link .tooltip .highlight,
+        .runes-link .tooltip .highlight,
+        .horoscope-link .tooltip .highlight,
+        .divination-link .tooltip .highlight,
         .gods-link .tooltip .highlight,
         .myth-link .tooltip .highlight,
+        .feedback-link .tooltip .highlight,
         .about-link .tooltip .highlight {
             color: #e8c85a;
             font-weight: 700;
             font-family: 'Cinzel', serif;
         }
 
+        .main-link .tooltip .rune-icon,
+        .runes-link .tooltip .rune-icon,
+        .horoscope-link .tooltip .rune-icon,
+        .divination-link .tooltip .rune-icon,
         .gods-link .tooltip .rune-icon,
         .myth-link .tooltip .rune-icon,
+        .feedback-link .tooltip .rune-icon,
         .about-link .tooltip .rune-icon {
             color: #e8c85a;
             font-size: 18px;
@@ -173,8 +203,13 @@
 
         /* ===== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
         @media (max-width: 768px) {
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
             .gods-link .tooltip,
             .myth-link .tooltip,
+            .feedback-link .tooltip,
             .about-link .tooltip {
                 width: 180px;
                 font-size: 12px;
@@ -182,8 +217,13 @@
                 top: calc(100% + 10px);
             }
             
+            .main-link .tooltip .rune-icon,
+            .runes-link .tooltip .rune-icon,
+            .horoscope-link .tooltip .rune-icon,
+            .divination-link .tooltip .rune-icon,
             .gods-link .tooltip .rune-icon,
             .myth-link .tooltip .rune-icon,
+            .feedback-link .tooltip .rune-icon,
             .about-link .tooltip .rune-icon {
                 font-size: 16px;
             }
@@ -609,17 +649,54 @@
 
     <div class="container">
 
-        <!-- ===== ШАПКА С МЕНЮ ===== -->
+        <!-- ===== ШАПКА С МЕНЮ (все кнопки с всплывающими подсказками) ===== -->
         <header>
             <div class="logo">
                 ᛝᚲᚷᛉᚠᚨᚱ
                 <span>Старший Футарк · 24 руны</span>
             </div>
             <nav>
-                <a href="index.html">Главная</a>
-                <a href="runes.html">Руны</a>
-                <a href="rune-horoscope.html">Гороскоп</a>
-                <a href="rune-divination.html">Гадание</a>
+                <!-- ГЛАВНАЯ -->
+                <a href="index.html" class="main-link">
+                    Главная
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚱ</span>
+                        <span class="highlight">Вернуться на главную</span><br>
+                        Главная страница с руническим кругом
+                    </span>
+                </a>
+
+                <!-- РУНЫ -->
+                <a href="runes.html" class="runes-link">
+                    Руны
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚠ</span>
+                        <span class="highlight">Все 24 руны Футарка</span><br>
+                        Значения, символы и атты
+                    </span>
+                </a>
+
+                <!-- ГОРОСКОП -->
+                <a href="rune-horoscope.html" class="horoscope-link">
+                    Гороскоп
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛃ</span>
+                        <span class="highlight">Рунический гороскоп</span><br>
+                        Предсказание по дате рождения
+                    </span>
+                </a>
+
+                <!-- ГАДАНИЕ -->
+                <a href="rune-divination.html" class="divination-link">
+                    Гадание
+                    <span class="tooltip">
+                        <span class="rune-icon">ᛉ</span>
+                        <span class="highlight">Онлайн-гадание на рунах</span><br>
+                        Брось руны и узнай судьбу
+                    </span>
+                </a>
+
+                <!-- БОГИ -->
                 <a href="gods.html" class="gods-link">
                     Боги
                     <span class="tooltip">
@@ -628,6 +705,8 @@
                         Один, Тор, Локи, Фрейя и другие
                     </span>
                 </a>
+
+                <!-- МИФОЛОГИЯ -->
                 <a href="mifolgi.html" class="myth-link">
                     Мифология
                     <span class="tooltip">
@@ -636,7 +715,18 @@
                         Девять миров, руны и боги
                     </span>
                 </a>
-                <a href="feedback.html">Обратная связь</a>
+
+                <!-- ОБРАТНАЯ СВЯЗЬ -->
+                <a href="feedback.html" class="feedback-link">
+                    Обратная связь
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚨ</span>
+                        <span class="highlight">Написать создателю</span><br>
+                        Вопросы, идеи и поддержка
+                    </span>
+                </a>
+
+                <!-- О САЙТЕ -->
                 <a href="about.html" class="about-link">
                     О сайте
                     <span class="tooltip">
