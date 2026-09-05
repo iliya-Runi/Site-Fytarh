@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-     <!-- ===== FAVICON: РУНА АНСУЗ В КРУГЕ Логотип сайта символ общения мудрости и знаний ===== -->
-    <!-- ===== FAVICON: РУНА АНСУЗ В КРУГЕ Логотип сайта символ общения мудрости и знаний ===== -->
+     <!-- ===== FAVICON: РУНА АНСУЗ В КРУГЕ ===== -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
-    <!-- ===== FAVICON: Четная попытка добавить сайт в яндекс ===== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Все руны Старшего Футарка | Скандинавская мифология</title>
@@ -136,6 +134,33 @@
             line-height: 1.8;
         }
 
+        /* ===== НАВИГАЦИЯ (УВЕЛИЧЕННЫЕ КНОПКИ) ===== */
+        nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        nav a {
+            color: #b8ab9a;
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+            border-bottom: 2px solid transparent;
+            padding: 8px 6px 6px 6px;
+            position: relative;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #c9a050;
+            border-bottom-color: #c9a050;
+        }
+
         /* ===== ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ ===== */
         .main-link,
         .runes-link,
@@ -143,6 +168,7 @@
         .divination-link,
         .gods-link,
         .myth-link,
+        .consult-link,
         .feedback-link,
         .about-link {
             position: relative;
@@ -155,23 +181,24 @@
         .divination-link .tooltip,
         .gods-link .tooltip,
         .myth-link .tooltip,
+        .consult-link .tooltip,
         .feedback-link .tooltip,
         .about-link .tooltip {
             visibility: hidden;
             opacity: 0;
-            width: 220px;
+            width: 230px;
             background: rgba(20, 20, 35, 0.95);
             color: #d4c9b8;
             text-align: center;
-            padding: 12px 15px;
+            padding: 14px 18px;
             border-radius: 12px;
             border: 1px solid rgba(201, 160, 80, 0.2);
             font-family: 'Georgia', serif;
-            font-size: 13px;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1.6;
             letter-spacing: 0.5px;
             position: absolute;
-            top: calc(100% + 15px);
+            top: calc(100% + 18px);
             left: 50%;
             transform: translateX(-50%) translateY(-5px);
             transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
@@ -187,6 +214,7 @@
         .divination-link .tooltip::after,
         .gods-link .tooltip::after,
         .myth-link .tooltip::after,
+        .consult-link .tooltip::after,
         .feedback-link .tooltip::after,
         .about-link .tooltip::after {
             content: '';
@@ -204,6 +232,7 @@
         .divination-link:hover .tooltip,
         .gods-link:hover .tooltip,
         .myth-link:hover .tooltip,
+        .consult-link:hover .tooltip,
         .feedback-link:hover .tooltip,
         .about-link:hover .tooltip {
             visibility: visible;
@@ -217,6 +246,7 @@
         .divination-link .tooltip .highlight,
         .gods-link .tooltip .highlight,
         .myth-link .tooltip .highlight,
+        .consult-link .tooltip .highlight,
         .feedback-link .tooltip .highlight,
         .about-link .tooltip .highlight {
             color: #e8c85a;
@@ -230,27 +260,79 @@
         .divination-link .tooltip .rune-icon,
         .gods-link .tooltip .rune-icon,
         .myth-link .tooltip .rune-icon,
+        .consult-link .tooltip .rune-icon,
         .feedback-link .tooltip .rune-icon,
         .about-link .tooltip .rune-icon {
             color: #e8c85a;
-            font-size: 18px;
+            font-size: 20px;
             display: block;
             margin-bottom: 4px;
         }
 
-        @media (max-width: 768px) {
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 1100px) {
+            nav {
+                gap: 18px;
+            }
+            nav a {
+                font-size: 14px;
+                padding: 6px 4px 4px 4px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                gap: 14px;
+            }
+            nav a {
+                font-size: 13px;
+                letter-spacing: 1px;
+                padding: 6px 3px 4px 3px;
+            }
             .main-link .tooltip,
             .runes-link .tooltip,
             .horoscope-link .tooltip,
             .divination-link .tooltip,
             .gods-link .tooltip,
             .myth-link .tooltip,
+            .consult-link .tooltip,
             .feedback-link .tooltip,
             .about-link .tooltip {
-                width: 180px;
-                font-size: 12px;
-                padding: 10px 12px;
-                top: calc(100% + 10px);
+                width: 200px;
+                font-size: 13px;
+                padding: 12px 14px;
+                top: calc(100% + 14px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                justify-content: center;
+                gap: 12px 16px;
+            }
+            nav a {
+                font-size: 14px;
+                letter-spacing: 1px;
+                padding: 6px 4px;
+                border-bottom-width: 2px;
+            }
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
+            .gods-link .tooltip,
+            .myth-link .tooltip,
+            .consult-link .tooltip,
+            .feedback-link .tooltip,
+            .about-link .tooltip {
+                width: 200px;
+                font-size: 13px;
+                padding: 12px 14px;
+                top: calc(100% + 12px);
             }
             .main-link .tooltip .rune-icon,
             .runes-link .tooltip .rune-icon,
@@ -258,13 +340,11 @@
             .divination-link .tooltip .rune-icon,
             .gods-link .tooltip .rune-icon,
             .myth-link .tooltip .rune-icon,
+            .consult-link .tooltip .rune-icon,
             .feedback-link .tooltip .rune-icon,
             .about-link .tooltip .rune-icon {
-                font-size: 16px;
+                font-size: 18px;
             }
-        }
-
-        @media (max-width: 768px) {
             .runes-page .att-title {
                 font-size: 22px;
                 letter-spacing: 4px;
@@ -282,6 +362,28 @@
         }
 
         @media (max-width: 480px) {
+            nav {
+                gap: 8px 10px;
+            }
+            nav a {
+                font-size: 12px;
+                letter-spacing: 0.5px;
+                padding: 5px 3px;
+            }
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
+            .gods-link .tooltip,
+            .myth-link .tooltip,
+            .consult-link .tooltip,
+            .feedback-link .tooltip,
+            .about-link .tooltip {
+                width: 160px;
+                font-size: 11px;
+                padding: 10px 12px;
+                top: calc(100% + 10px);
+            }
             .rune-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
@@ -366,6 +468,14 @@
                         <span class="rune-icon">ᛝ</span>
                         <span class="highlight">Подробная страница</span><br>
                         Девять миров, руны и боги
+                    </span>
+                </a>
+                <a href="consultation.html" class="consult-link">
+                    Консультация
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚨ</span>
+                        <span class="highlight">Консультация рунолога</span><br>
+                        Помощь в вопросах жизни и судьбы
                     </span>
                 </a>
                 <a href="feedback.html" class="feedback-link">

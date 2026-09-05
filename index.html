@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-     <!-- ===== FAVICON: РУНА АНСУЗ В КРУГЕ Логотип сайта символ общения мудрости и знаний ===== -->
+     <!-- ===== FAVICON: РУНА АНСУЗ В КРУГЕ ===== -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23c9a050' stroke-width='3'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23c9a050' font-weight='bold' font-family='serif'>ᚨ</text></svg>">
-    <!-- ===== FAVICON: Четная попытка добавить сайт в яндекс ===== -->
     <meta name="yandex-verification" content="3bbac91fb7c6c76a" />
     
     <meta charset="UTF-8">
@@ -58,6 +57,7 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             text-shadow: 0 0 15px rgba(201, 160, 80, 0.2);
+            flex-shrink: 0;
         }
 
         .logo span {
@@ -68,22 +68,26 @@
             font-weight: 400;
         }
 
+        /* ===== НАВИГАЦИЯ (УВЕЛИЧЕННЫЕ КНОПКИ) ===== */
         nav {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
             align-items: center;
+            justify-content: flex-end;
         }
 
         nav a {
             color: #b8ab9a;
             text-decoration: none;
-            font-size: 15px;
-            letter-spacing: 2px;
+            font-size: 16px;
+            letter-spacing: 1.5px;
             transition: 0.3s;
-            border-bottom: 1px solid transparent;
-            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            padding: 8px 6px 6px 6px;
             position: relative;
+            white-space: nowrap;
+            font-weight: 500;
         }
 
         nav a:hover {
@@ -92,46 +96,46 @@
         }
 
         /* ============================================================
-           ===== ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ ДЛЯ ВСЕХ КНОПОК =====
+           ===== ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ =====
            ============================================================ */
 
-        /* Общие стили для всех ссылок с подсказками */
         .main-link,
         .runes-link,
         .horoscope-link,
         .divination-link,
         .gods-link,
         .myth-link,
+        .consult-link,
         .feedback-link,
         .about-link {
             position: relative;
             cursor: pointer;
         }
 
-        /* Общие стили для всех подсказок */
         .main-link .tooltip,
         .runes-link .tooltip,
         .horoscope-link .tooltip,
         .divination-link .tooltip,
         .gods-link .tooltip,
         .myth-link .tooltip,
+        .consult-link .tooltip,
         .feedback-link .tooltip,
         .about-link .tooltip {
             visibility: hidden;
             opacity: 0;
-            width: 220px;
+            width: 230px;
             background: rgba(20, 20, 35, 0.95);
             color: #d4c9b8;
             text-align: center;
-            padding: 12px 15px;
+            padding: 14px 18px;
             border-radius: 12px;
             border: 1px solid rgba(201, 160, 80, 0.2);
             font-family: 'Georgia', serif;
-            font-size: 13px;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1.6;
             letter-spacing: 0.5px;
             position: absolute;
-            top: calc(100% + 15px);
+            top: calc(100% + 18px);
             left: 50%;
             transform: translateX(-50%) translateY(-5px);
             transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
@@ -141,13 +145,13 @@
             white-space: normal;
         }
 
-        /* Стрелка подсказки (сверху) */
         .main-link .tooltip::after,
         .runes-link .tooltip::after,
         .horoscope-link .tooltip::after,
         .divination-link .tooltip::after,
         .gods-link .tooltip::after,
         .myth-link .tooltip::after,
+        .consult-link .tooltip::after,
         .feedback-link .tooltip::after,
         .about-link .tooltip::after {
             content: '';
@@ -159,13 +163,13 @@
             border-bottom-color: rgba(201, 160, 80, 0.2);
         }
 
-        /* Показываем при наведении */
         .main-link:hover .tooltip,
         .runes-link:hover .tooltip,
         .horoscope-link:hover .tooltip,
         .divination-link:hover .tooltip,
         .gods-link:hover .tooltip,
         .myth-link:hover .tooltip,
+        .consult-link:hover .tooltip,
         .feedback-link:hover .tooltip,
         .about-link:hover .tooltip {
             visibility: visible;
@@ -173,13 +177,13 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Общие стили для элементов внутри подсказок */
         .main-link .tooltip .highlight,
         .runes-link .tooltip .highlight,
         .horoscope-link .tooltip .highlight,
         .divination-link .tooltip .highlight,
         .gods-link .tooltip .highlight,
         .myth-link .tooltip .highlight,
+        .consult-link .tooltip .highlight,
         .feedback-link .tooltip .highlight,
         .about-link .tooltip .highlight {
             color: #e8c85a;
@@ -193,39 +197,115 @@
         .divination-link .tooltip .rune-icon,
         .gods-link .tooltip .rune-icon,
         .myth-link .tooltip .rune-icon,
+        .consult-link .tooltip .rune-icon,
         .feedback-link .tooltip .rune-icon,
         .about-link .tooltip .rune-icon {
             color: #e8c85a;
-            font-size: 18px;
+            font-size: 20px;
             display: block;
             margin-bottom: 4px;
         }
 
-        /* ===== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ===== */
-        @media (max-width: 768px) {
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 1100px) {
+            nav {
+                gap: 18px;
+            }
+            nav a {
+                font-size: 14px;
+                padding: 6px 4px 4px 4px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                gap: 14px;
+            }
+            nav a {
+                font-size: 13px;
+                letter-spacing: 1px;
+                padding: 6px 3px 4px 3px;
+            }
             .main-link .tooltip,
             .runes-link .tooltip,
             .horoscope-link .tooltip,
             .divination-link .tooltip,
             .gods-link .tooltip,
             .myth-link .tooltip,
+            .consult-link .tooltip,
             .feedback-link .tooltip,
             .about-link .tooltip {
-                width: 180px;
-                font-size: 12px;
-                padding: 10px 12px;
-                top: calc(100% + 10px);
+                width: 200px;
+                font-size: 13px;
+                padding: 12px 14px;
+                top: calc(100% + 14px);
             }
-            
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                justify-content: center;
+                gap: 12px 16px;
+            }
+            nav a {
+                font-size: 14px;
+                letter-spacing: 1px;
+                padding: 6px 4px;
+                border-bottom-width: 2px;
+            }
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
+            .gods-link .tooltip,
+            .myth-link .tooltip,
+            .consult-link .tooltip,
+            .feedback-link .tooltip,
+            .about-link .tooltip {
+                width: 200px;
+                font-size: 13px;
+                padding: 12px 14px;
+                top: calc(100% + 12px);
+            }
             .main-link .tooltip .rune-icon,
             .runes-link .tooltip .rune-icon,
             .horoscope-link .tooltip .rune-icon,
             .divination-link .tooltip .rune-icon,
             .gods-link .tooltip .rune-icon,
             .myth-link .tooltip .rune-icon,
+            .consult-link .tooltip .rune-icon,
             .feedback-link .tooltip .rune-icon,
             .about-link .tooltip .rune-icon {
-                font-size: 16px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                gap: 8px 10px;
+            }
+            nav a {
+                font-size: 12px;
+                letter-spacing: 0.5px;
+                padding: 5px 3px;
+            }
+            .main-link .tooltip,
+            .runes-link .tooltip,
+            .horoscope-link .tooltip,
+            .divination-link .tooltip,
+            .gods-link .tooltip,
+            .myth-link .tooltip,
+            .consult-link .tooltip,
+            .feedback-link .tooltip,
+            .about-link .tooltip {
+                width: 160px;
+                font-size: 11px;
+                padding: 10px 12px;
+                top: calc(100% + 10px);
             }
         }
 
@@ -372,10 +452,10 @@
             background: rgba(201, 160, 80, 0.08);
             border: 1px solid rgba(201, 160, 80, 0.2);
             color: #c9a050;
-            padding: 10px 30px;
+            padding: 12px 35px;
             border-radius: 30px;
             font-family: 'Cinzel', serif;
-            font-size: 14px;
+            font-size: 15px;
             letter-spacing: 2px;
             cursor: pointer;
             transition: 0.3s;
@@ -556,46 +636,34 @@
             color: #c9a050;
         }
 
-        /* ===== АДАПТАЦИЯ ===== */
+        /* ===== ОБЩАЯ АДАПТАЦИЯ ===== */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-
             .hero h1 {
                 font-size: 32px;
             }
-
             .rune-circle-container {
                 max-width: 340px;
             }
-
             .rune-circle .rune-item {
                 font-size: 20px;
                 width: 34px;
                 height: 34px;
             }
-
             .rune-circle .rune-item .tooltip {
                 font-size: 10px;
                 padding: 4px 10px;
             }
-
             .rune-grid {
                 grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
                 gap: 18px;
             }
-
             .rune-card .symbol {
                 font-size: 38px;
             }
-
             .myth-section {
                 grid-template-columns: 1fr;
                 padding: 25px;
             }
-
             .att-title {
                 font-size: 22px;
                 letter-spacing: 4px;
@@ -606,39 +674,31 @@
             .hero h1 {
                 font-size: 26px;
             }
-
             .rune-circle-container {
                 max-width: 280px;
             }
-
             .rune-circle .rune-item {
                 font-size: 16px;
                 width: 28px;
                 height: 28px;
             }
-
             .rune-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
-
             .rune-card {
                 padding: 16px 8px 18px;
                 min-height: 200px;
             }
-
             .rune-card .symbol {
                 font-size: 32px;
             }
-
             .rune-card .name {
                 font-size: 16px;
             }
-
             .rune-card .meaning {
                 font-size: 11px;
             }
-
             .att-title {
                 font-size: 18px;
             }
@@ -649,14 +709,13 @@
 
     <div class="container">
 
-        <!-- ===== ШАПКА С МЕНЮ (все кнопки с всплывающими подсказками) ===== -->
+        <!-- ===== ШАПКА С МЕНЮ ===== -->
         <header>
             <div class="logo">
                 ᛝᚲᚷᛉᚠᚨᚱ
                 <span>Старший Футарк · 24 руны</span>
             </div>
             <nav>
-                <!-- ГЛАВНАЯ -->
                 <a href="index.html" class="main-link">
                     Главная
                     <span class="tooltip">
@@ -665,8 +724,6 @@
                         Главная страница с руническим кругом
                     </span>
                 </a>
-
-                <!-- РУНЫ -->
                 <a href="runes.html" class="runes-link">
                     Руны
                     <span class="tooltip">
@@ -675,8 +732,6 @@
                         Значения, символы и атты
                     </span>
                 </a>
-
-                <!-- ГОРОСКОП -->
                 <a href="rune-horoscope.html" class="horoscope-link">
                     Гороскоп
                     <span class="tooltip">
@@ -685,8 +740,6 @@
                         Предсказание по дате рождения
                     </span>
                 </a>
-
-                <!-- ГАДАНИЕ -->
                 <a href="rune-divination.html" class="divination-link">
                     Гадание
                     <span class="tooltip">
@@ -695,8 +748,6 @@
                         Брось руны и узнай судьбу
                     </span>
                 </a>
-
-                <!-- БОГИ -->
                 <a href="gods.html" class="gods-link">
                     Боги
                     <span class="tooltip">
@@ -705,8 +756,6 @@
                         Один, Тор, Локи, Фрейя и другие
                     </span>
                 </a>
-
-                <!-- МИФОЛОГИЯ -->
                 <a href="mifolgi.html" class="myth-link">
                     Мифология
                     <span class="tooltip">
@@ -715,8 +764,14 @@
                         Девять миров, руны и боги
                     </span>
                 </a>
-
-                <!-- ОБРАТНАЯ СВЯЗЬ -->
+                <a href="consultation.html" class="consult-link">
+                    Консультация
+                    <span class="tooltip">
+                        <span class="rune-icon">ᚨ</span>
+                        <span class="highlight">Консультация рунолога</span><br>
+                        Помощь в вопросах жизни и судьбы
+                    </span>
+                </a>
                 <a href="feedback.html" class="feedback-link">
                     Обратная связь
                     <span class="tooltip">
@@ -725,8 +780,6 @@
                         Вопросы, идеи и поддержка
                     </span>
                 </a>
-
-                <!-- О САЙТЕ -->
                 <a href="about.html" class="about-link">
                     О сайте
                     <span class="tooltip">
@@ -772,86 +825,20 @@
                 position: relative;
                 overflow: hidden;
             ">
-                <!-- Декоративный фон -->
-                <div style="
-                    position: absolute;
-                    top: -50px;
-                    right: -50px;
-                    font-size: 120px;
-                    color: rgba(201, 160, 80, 0.03);
-                    pointer-events: none;
-                    font-family: serif;
-                ">ᛉ</div>
-                <div style="
-                    position: absolute;
-                    bottom: -30px;
-                    left: -30px;
-                    font-size: 80px;
-                    color: rgba(201, 160, 80, 0.03);
-                    pointer-events: none;
-                    font-family: serif;
-                ">ᚨ</div>
+                <div style="position: absolute; top: -50px; right: -50px; font-size: 120px; color: rgba(201, 160, 80, 0.03); pointer-events: none; font-family: serif;">ᛉ</div>
+                <div style="position: absolute; bottom: -30px; left: -30px; font-size: 80px; color: rgba(201, 160, 80, 0.03); pointer-events: none; font-family: serif;">ᚨ</div>
 
-                <!-- Метка -->
-                <div style="
-                    color: #6a5f50;
-                    font-size: 11px;
-                    letter-spacing: 4px;
-                    margin-bottom: 12px;
-                    text-transform: uppercase;
-                ">✦ Мудрость предков ✦</div>
+                <div style="color: #6a5f50; font-size: 11px; letter-spacing: 4px; margin-bottom: 12px; text-transform: uppercase;">✦ Мудрость предков ✦</div>
+                <div style="font-size: 32px; color: rgba(201, 160, 80, 0.15); letter-spacing: 12px; margin-bottom: 10px;">ᛝᚲᚷᛉᚠᚨᚱ</div>
 
-                <!-- Руна-декор -->
-                <div style="
-                    font-size: 32px;
-                    color: rgba(201, 160, 80, 0.15);
-                    letter-spacing: 12px;
-                    margin-bottom: 10px;
-                ">ᛝᚲᚷᛉᚠᚨᚱ</div>
-
-                <!-- Цитата -->
-                <div id="dailyQuote" style="
-                    font-size: 22px;
-                    color: #d4c9b8;
-                    font-family: 'Georgia', serif;
-                    line-height: 1.8;
-                    font-style: italic;
-                    max-width: 750px;
-                    margin: 0 auto 12px;
-                ">
+                <div id="dailyQuote" style="font-size: 22px; color: #d4c9b8; font-family: 'Georgia', serif; line-height: 1.8; font-style: italic; max-width: 750px; margin: 0 auto 12px;">
                     «Познай себя, и ты познаешь мир.»
                 </div>
+                <div style="font-size: 14px; color: #6a5f50; letter-spacing: 2px;" id="quoteAuthor">— из Старшей Эдды</div>
 
-                <!-- Автор -->
-                <div style="
-                    font-size: 14px;
-                    color: #6a5f50;
-                    letter-spacing: 2px;
-                " id="quoteAuthor">— из Старшей Эдды</div>
+                <div style="margin: 20px auto 0; width: 80px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201, 160, 80, 0.2), transparent);"></div>
 
-                <!-- Декоративная линия -->
-                <div style="
-                    margin: 20px auto 0;
-                    width: 80px;
-                    height: 1px;
-                    background: linear-gradient(90deg, transparent, rgba(201, 160, 80, 0.2), transparent);
-                "></div>
-
-                <!-- Кнопка обновления -->
-                <button onclick="updateQuote()" style="
-                    margin-top: 15px;
-                    background: rgba(201, 160, 80, 0.05);
-                    border: 1px solid rgba(201, 160, 80, 0.1);
-                    border-radius: 30px;
-                    padding: 6px 20px;
-                    color: #6a5f50;
-                    font-size: 11px;
-                    letter-spacing: 2px;
-                    font-family: 'Cinzel', serif;
-                    cursor: pointer;
-                    transition: 0.3s;
-                " onmouseover="this.style.borderColor='rgba(201,160,80,0.3)'; this.style.color='#b8ab9a';"
-                   onmouseout="this.style.borderColor='rgba(201,160,80,0.1)'; this.style.color='#6a5f50';">
+                <button onclick="updateQuote()" style="margin-top: 15px; background: rgba(201, 160, 80, 0.05); border: 1px solid rgba(201, 160, 80, 0.1); border-radius: 30px; padding: 8px 25px; color: #6a5f50; font-size: 12px; letter-spacing: 2px; font-family: 'Cinzel', serif; cursor: pointer; transition: 0.3s;" onmouseover="this.style.borderColor='rgba(201,160,80,0.3)'; this.style.color='#b8ab9a';" onmouseout="this.style.borderColor='rgba(201,160,80,0.1)'; this.style.color='#6a5f50';">
                     ⟳ Обновить
                 </button>
             </div>
@@ -904,7 +891,7 @@
 
     </div>
 
-    <!-- ===== JAVASCRIPT ДЛЯ РУНИЧЕСКОГО КРУГА ===== -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
         const runes = [
             { symbol: 'ᚠ', name: 'Феху' },
@@ -970,85 +957,34 @@
         window.addEventListener('load', function() {
             circle.style.animationPlayState = 'running';
         });
-    </script>
 
-    <script>
-        // Регистрация Service Worker для PWA
+        // ============================================================
+        // ===== ЦИТАТА ДНЯ =====
+        // ============================================================
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
                 .then(() => console.log('✅ Service Worker зарегистрирован'))
                 .catch(err => console.log('❌ Ошибка:', err));
         }
 
-        // ============================================================
-        // ===== ЦИТАТА ДНЯ / МУДРОСТЬ ПРЕДКОВ =====
-        // ============================================================
-
         const quotes = [
-            {
-                text: 'Познай себя, и ты познаешь мир. Познай руны — и ты познаешь себя.',
-                author: 'из Старшей Эдды'
-            },
-            {
-                text: 'Руны — это не предсказание судьбы, а подсказки на пути. Они показывают возможные дороги, но выбирать тебе.',
-                author: 'скандинавская традиция'
-            },
-            {
-                text: 'Умирают люди, умирают боги — но руны и память о них живут в тех, кто помнит.',
-                author: 'из Старшей Эдды'
-            },
-            {
-                text: 'Мудрость приходит к тем, кто умеет слушать тишину и слышать голос камней.',
-                author: 'северная мудрость'
-            },
-            {
-                text: 'Дар должен быть равноценен дару. Так сохраняется гармония в мире.',
-                author: 'руна Гебо'
-            },
-            {
-                text: 'Сила не в том, чтобы победить всех, а в том, чтобы не сдаваться, даже когда кажется, что всё потеряно.',
-                author: 'скандинавская традиция'
-            },
-            {
-                text: 'Ветер сдувает старые следы, но не уничтожает их — он превращает их в новые пути.',
-                author: 'северная мудрость'
-            },
-            {
-                text: 'Тот, кто слышит свой внутренний голос, никогда не попадёт в ловушку, поставленную другими.',
-                author: 'руна Альгиз'
-            },
-            {
-                text: 'Человек силён своими корнями. Помни своих предков, и ты никогда не потеряешь себя.',
-                author: 'руна Манназ'
-            },
-            {
-                text: 'Огонь — это свет во тьме. Зажги его, и ты увидишь путь, который искал.',
-                author: 'руна Кеназ'
-            },
-            {
-                text: 'Что посеешь, то и пожнёшь. Жди своего часа, и урожай придёт, когда придёт время.',
-                author: 'руна Йера'
-            },
-            {
-                text: 'После ночи всегда приходит рассвет. Свет приходит к тем, кто ждёт его с верой.',
-                author: 'руна Дагаз'
-            },
-            {
-                text: 'Честь дороже жизни. Сражайся за правду, даже если это стоит тебе всего.',
-                author: 'руна Тейваз'
-            },
-            {
-                text: 'Сила нужна тому, кто хочет победить, но ещё важнее — сила духа, чтобы не сдаться.',
-                author: 'руна Уруз'
-            },
-            {
-                text: 'Богатство — утешение для человека, но оно должно быть разделено, иначе принесёт лишь горе.',
-                author: 'руна Феху'
-            },
-            {
-                text: 'Лёд скрывает течение, но не останавливает его. Время тишины — это время роста.',
-                author: 'руна Иса'
-            }
+            { text: 'Познай себя, и ты познаешь мир. Познай руны — и ты познаешь себя.', author: 'из Старшей Эдды' },
+            { text: 'Руны — это не предсказание судьбы, а подсказки на пути. Они показывают возможные дороги, но выбирать тебе.', author: 'скандинавская традиция' },
+            { text: 'Умирают люди, умирают боги — но руны и память о них живут в тех, кто помнит.', author: 'из Старшей Эдды' },
+            { text: 'Мудрость приходит к тем, кто умеет слушать тишину и слышать голос камней.', author: 'северная мудрость' },
+            { text: 'Дар должен быть равноценен дару. Так сохраняется гармония в мире.', author: 'руна Гебо' },
+            { text: 'Сила не в том, чтобы победить всех, а в том, чтобы не сдаваться, даже когда кажется, что всё потеряно.', author: 'скандинавская традиция' },
+            { text: 'Ветер сдувает старые следы, но не уничтожает их — он превращает их в новые пути.', author: 'северная мудрость' },
+            { text: 'Тот, кто слышит свой внутренний голос, никогда не попадёт в ловушку, поставленную другими.', author: 'руна Альгиз' },
+            { text: 'Человек силён своими корнями. Помни своих предков, и ты никогда не потеряешь себя.', author: 'руна Манназ' },
+            { text: 'Огонь — это свет во тьме. Зажги его, и ты увидишь путь, который искал.', author: 'руна Кеназ' },
+            { text: 'Что посеешь, то и пожнёшь. Жди своего часа, и урожай придёт, когда придёт время.', author: 'руна Йера' },
+            { text: 'После ночи всегда приходит рассвет. Свет приходит к тем, кто ждёт его с верой.', author: 'руна Дагаз' },
+            { text: 'Честь дороже жизни. Сражайся за правду, даже если это стоит тебе всего.', author: 'руна Тейваз' },
+            { text: 'Сила нужна тому, кто хочет победить, но ещё важнее — сила духа, чтобы не сдаться.', author: 'руна Уруз' },
+            { text: 'Богатство — утешение для человека, но оно должно быть разделено, иначе принесёт лишь горе.', author: 'руна Феху' },
+            { text: 'Лёд скрывает течение, но не останавливает его. Время тишины — это время роста.', author: 'руна Иса' }
         ];
 
         let currentQuoteIndex = -1;
@@ -1077,7 +1013,6 @@
             document.getElementById('dailyQuote').textContent = `«${quote.text}»`;
             document.getElementById('quoteAuthor').textContent = `— ${quote.author}`;
             
-            // Анимация
             const block = document.getElementById('dailyQuote').parentElement;
             if (block) {
                 block.style.transition = 'opacity 0.3s ease';
@@ -1088,18 +1023,7 @@
             }
         }
 
-        // Запускаем при загрузке
         updateDailyQuote();
-
-        // ===== АНИМАЦИЯ ВРАЩЕНИЯ =====
-        const styleSheet = document.createElement("style");
-        styleSheet.textContent = `
-            @keyframes spin {
-                0% { transform: rotate(0deg) scale(0.5); opacity: 1; }
-                100% { transform: rotate(720deg) scale(1.5); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(styleSheet);
     </script>
 
 </body>
